@@ -26,7 +26,7 @@ class AracYonetimSistemi
 {
     private List<Arac> araclar = new List<Arac>();
 
-    // Araç Ekleme
+    
     public void AracEkle()
     {
         Console.Write("Araç Markası: ");
@@ -43,7 +43,7 @@ class AracYonetimSistemi
         Console.WriteLine("Araç başarıyla eklendi!\n");
     }
 
-    // Araç Silme
+    
     public void AracSil()
     {
         Console.Write("Silmek istediğiniz aracın plakasını girin: ");
@@ -61,7 +61,7 @@ class AracYonetimSistemi
         }
     }
 
-    // Araç Listeleme
+    
     public void AraclariListele()
     {
         if (araclar.Count == 0)
@@ -78,7 +78,7 @@ class AracYonetimSistemi
         }
     }
 
-    // Araç Satış
+    
     public void AracSat()
     {
         Console.Write("Satmak istediğiniz aracın plakasını girin: ");
@@ -98,7 +98,7 @@ class AracYonetimSistemi
             Console.WriteLine($"İndirim: {indirim} TL");
             Console.WriteLine($"Satış Tutarı: {satisTutari} TL\n");
 
-            araclar.Remove(satilacakArac);  // Satılan araç listeden çıkarılıyor
+            araclar.Remove(satilacakArac);  
         }
         else
         {
@@ -106,7 +106,7 @@ class AracYonetimSistemi
         }
     }
 
-    // Araç Kiralama (Araç fiyatına göre ayarlanmış)
+   
     public void AracKirala()
     {
         Console.Write("Kiralamak istediğiniz aracın plakasını girin: ");
@@ -118,8 +118,7 @@ class AracYonetimSistemi
             Console.Write("Kiralama süresi (gün): ");
             int kiralamaSuresi = int.Parse(Console.ReadLine());
 
-            // Araç fiyatına göre günlük kiralama ücreti belirleniyor
-            // Örneğin, aracın fiyatının %1'i günlük kiralama fiyatı olarak alınabilir.
+            
             double gunlukKiralamaFiyati = kiralanacakArac.Fiyat * 0.01;
 
             double toplamFiyat = gunlukKiralamaFiyati * kiralamaSuresi;
