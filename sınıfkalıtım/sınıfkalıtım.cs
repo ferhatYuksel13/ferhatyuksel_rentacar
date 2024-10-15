@@ -26,6 +26,7 @@ class AracYonetimSistemi
 {
     private List<Arac> araclar = new List<Arac>();
 
+    // Araç Ekleme
     public void AracEkle()
     {
         Console.Write("Araç Markası: ");
@@ -42,6 +43,7 @@ class AracYonetimSistemi
         Console.WriteLine("Araç başarıyla eklendi!\n");
     }
 
+    // Araç Silme
     public void AracSil()
     {
         Console.Write("Silmek istediğiniz aracın plakasını girin: ");
@@ -59,6 +61,7 @@ class AracYonetimSistemi
         }
     }
 
+    // Araç Listeleme
     public void AraclariListele()
     {
         if (araclar.Count == 0)
@@ -75,6 +78,7 @@ class AracYonetimSistemi
         }
     }
 
+    // Araç Satış
     public void AracSat()
     {
         Console.Write("Satmak istediğiniz aracın plakasını girin: ");
@@ -102,6 +106,7 @@ class AracYonetimSistemi
         }
     }
 
+    // Araç Kiralama (Araç fiyatına göre ayarlanmış)
     public void AracKirala()
     {
         Console.Write("Kiralamak istediğiniz aracın plakasını girin: ");
@@ -113,15 +118,21 @@ class AracYonetimSistemi
             Console.Write("Kiralama süresi (gün): ");
             int kiralamaSuresi = int.Parse(Console.ReadLine());
 
+            // Araç fiyatına göre günlük kiralama ücreti belirleniyor
+            // Örneğin, aracın fiyatının %1'i günlük kiralama fiyatı olarak alınabilir.
+            double gunlukKiralamaFiyati = kiralanacakArac.Fiyat * 0.01;
+
+            double toplamFiyat = gunlukKiralamaFiyati * kiralamaSuresi;
+
             Console.WriteLine("2 farklı indirim yüzdesi mevcuttur: 5%, 10%");
             Console.Write("Uygulamak istediğiniz indirimi seçin (5/10): ");
             int indirimYuzdesi = int.Parse(Console.ReadLine());
 
-            double gunlukFiyat = kiralanacakArac.Fiyat / 30;  // Aylık fiyatı baz alıp günlük hesaplama
-            double toplamFiyat = gunlukFiyat * kiralamaSuresi;
             double indirim = toplamFiyat * indirimYuzdesi / 100;
             double kiralamaTutari = toplamFiyat - indirim;
 
+            Console.WriteLine($"Araç Fiyatı: {kiralanacakArac.Fiyat} TL");
+            Console.WriteLine($"Günlük Kiralama Ücreti: {gunlukKiralamaFiyati} TL");
             Console.WriteLine($"Toplam Kiralama Ücreti: {toplamFiyat} TL");
             Console.WriteLine($"İndirim: {indirim} TL");
             Console.WriteLine($"Kiralama Tutarı: {kiralamaTutari} TL\n");
@@ -179,3 +190,4 @@ class Program
         } while (secim != 6);
     }
 }
+
